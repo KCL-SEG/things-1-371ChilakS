@@ -15,9 +15,6 @@ class Thing(models.Model):
     )
     quantity = models.IntegerField(
         unique=False,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(0)
-        ]
-
+        validators = [MinValueValidator(0, "Quantity must not be less than 0"),
+        MaxValueValidator(100, "Quantity must not be more than 100")]
     )
